@@ -1,7 +1,7 @@
 //@flow
 import React, { Component, Fragment } from "react";
 import "./App.css";
-import { Typography, Card, CardContent } from "@material-ui/core";
+import { Typography, Card, CardContent, CardMedia } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 type Props = {
@@ -21,12 +21,6 @@ const styles = {
   },
 };
 
-const CustomCard = withStyles({
-  root: {
-    width: 345,
-  },
-})(Card);
-
 class App extends Component<Props> {
   constructor(props) {
     super(props);
@@ -36,11 +30,16 @@ class App extends Component<Props> {
     const { classes } = this.props;
     return (
       <Fragment>
-        <CustomCard>
+        <Card className={classes.card}>
+          <CardMedia
+            className={classes.media}
+            image="/static/images/cards/contemplative-reptile.jpg"
+            title="Contemplative Reptile"
+          />
           <CardContent>
             <Typography>今日のやることリスト(*´ω｀*)</Typography>
           </CardContent>
-        </CustomCard>
+        </Card>
       </Fragment>
     );
   }
