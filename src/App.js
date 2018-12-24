@@ -1,6 +1,5 @@
 //@flow
 import React, { Component, Fragment } from "react";
-import "./App.css";
 import { Typography, Card, CardContent, TextField, Button, Grid, withStyles } from "@material-ui/core";
 import AchieveDialog from "./components/dialogs/AchieveDialog";
 
@@ -62,6 +61,7 @@ class App extends Component<Props, State> {
   handleClick = () => {
     this.setState({ todayItem: this.state.item });
     this.setState({ item: "" });
+    localStorage.setItem("todayItem", document.getElementById("todo-text").value);
   };
 
   handleAchieveClick = () => {
@@ -76,7 +76,6 @@ class App extends Component<Props, State> {
   render() {
     const { classes } = this.props;
     const { item, todayItem, open } = this.state;
-    console.log(item);
     const defaultMessage = "まだ決まってないよ〜";
 
     return (
