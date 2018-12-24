@@ -35,6 +35,13 @@ const styles = {
   button: {
     paddingTop: 10,
   },
+  achieveButton: {
+    borderRadius: 8,
+  },
+  achieveButtonContainer: {
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
 };
 
 class App extends Component<Props, State> {
@@ -95,12 +102,20 @@ class App extends Component<Props, State> {
                     <Typography>達成できるように頑張ろう！</Typography>
                   </Grid>
                   <Grid item className={classes.form}>
-                    <Grid container>
+                    <Grid container alignItems="center">
                       <Grid item>
                         <Typography>{todayItem === "" ? defaultMessage : todayItem}</Typography>
                       </Grid>
-                      <Grid item>ちぇっく</Grid>
-                      <Grid item>できない</Grid>
+                      <Grid item className={classes.achieveButtonContainer}>
+                        <Button
+                          variant="outlined"
+                          color="secondary"
+                          className={classes.achieveButton}
+                          disabled={todayItem === ""}
+                        >
+                          達成した！
+                        </Button>
+                      </Grid>
                     </Grid>
                   </Grid>
                 </Grid>
