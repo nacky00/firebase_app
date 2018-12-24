@@ -1,8 +1,8 @@
 //@flow
 import React, { Component, Fragment } from "react";
 import "./App.css";
-import { Typography, Card, CardContent, TextField, Button, Grid } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
+import { Typography, Card, CardContent, TextField, Button, Grid, withStyles } from "@material-ui/core";
+import AchieveDialog from "./components/dialogs/AchieveDialog";
 
 type Props = {
   classes: Object,
@@ -11,6 +11,7 @@ type Props = {
 type State = {
   item: string,
   todayItem: string,
+  open: boolean,
 };
 
 const styles = {
@@ -50,6 +51,7 @@ class App extends Component<Props, State> {
     this.state = {
       item: "",
       todayItem: "",
+      open: false,
     };
   }
 
@@ -62,9 +64,18 @@ class App extends Component<Props, State> {
     this.setState({ item: "" });
   };
 
+  handleAchieveClick = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+    this.setState({ todayItem: "" });
+  };
+
   render() {
     const { classes } = this.props;
-    const { item, todayItem } = this.state;
+    const { item, todayItem, open } = this.state;
     console.log(item);
     const defaultMessage = "まだ決まってないよ〜";
 
@@ -112,6 +123,7 @@ class App extends Component<Props, State> {
                           color="secondary"
                           className={classes.achieveButton}
                           disabled={todayItem === ""}
+                          onClick={this.handleAchieveClick}
                         >
                           達成した！
                         </Button>
@@ -123,6 +135,7 @@ class App extends Component<Props, State> {
             </Card>
           </Grid>
         </Grid>
+        <AchieveDialog open={this.state.open} handleClose={this.handleClose} />
       </Fragment>
     );
   }
