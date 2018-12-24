@@ -10,7 +10,7 @@ type Props = {
 
 type State = {
   item: string,
-  items: Array<string>,
+  todayItem: string,
 };
 
 const styles = {
@@ -23,13 +23,17 @@ const styles = {
     marginBottom: 20,
   },
   title: {
-    backgroundColor: "##4682b4",
+    backgroundColor: "#4682b4",
   },
   media: {
     height: 140,
   },
-  todo: {
-    marginBottom: 5,
+  form: {
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+  button: {
+    paddingTop: 10,
   },
 };
 
@@ -37,8 +41,8 @@ class App extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      item: null,
-      items: [],
+      item: "",
+      todayItem: "",
     };
   }
 
@@ -47,46 +51,63 @@ class App extends Component<Props, State> {
   };
 
   handleClick = () => {
-    const addedItems = this.state.items;
-    this.setState({ items: addedItems.push(this.state.item) });
-    this.setState({ item: null });
+    this.setState({ todayItem: this.state.item });
+    this.setState({ item: "" });
   };
 
   render() {
     const { classes } = this.props;
-    const { item, items } = this.state;
+    const { item, todayItem } = this.state;
     console.log(item);
+    const defaultMessage = "まだ決まってないよ〜";
+
     return (
       <Fragment>
-        <Card className={classes.card}>
-          <CardContent className={classes.title}>
-            <Typography>今日やることは何かな？</Typography>
-          </CardContent>
-          <CardContent>
-            <Grid container direction="column">
-              <Grid item>
-                <TextField
-                  className={classes.todo}
-                  id="todo-text"
-                  variant="outlined"
-                  label="やること"
-                  onChange={this.handleChange}
-                />
-              </Grid>
-              <Grid item>
-                <Button variant="contained" color="primary" onClick={this.handleClick}>
-                  追加！
-                </Button>
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography>達成できるように頑張ろう！</Typography>
-            <Typography>{items}</Typography>
-          </CardContent>
-        </Card>
+        <Grid container justify="center">
+          <Grid item>
+            <Card className={classes.card}>
+              <CardContent className={classes.title}>
+                <Typography style={{ textAlign: "center" }}>今日やることを決めよう！</Typography>
+              </CardContent>
+              <CardContent>
+                <Grid container direction="column" alignItems="center">
+                  <Grid item className={classes.form}>
+                    <TextField
+                      id="todo-text"
+                      variant="outlined"
+                      label="今日すること"
+                      value={item}
+                      onChange={this.handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12} className={classes.button}>
+                    <Button variant="contained" color="primary" onClick={this.handleClick}>
+                      追加！
+                    </Button>
+                  </Grid>
+                </Grid>
+              </CardContent>
+            </Card>
+            <Card className={classes.card}>
+              <CardContent>
+                <Grid container direction="column" alignItems="center">
+                  <Grid item>
+                    <Typography>達成できるように頑張ろう！</Typography>
+                  </Grid>
+                  <Grid item className={classes.form}>
+                    <Grid container>
+                      <Grid item>
+                        <Typography>{todayItem === "" ? defaultMessage : todayItem}</Typography>
+                      </Grid>
+                      <Grid item>ちぇっく</Grid>
+                      <Grid item>できない</Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
       </Fragment>
     );
   }
