@@ -20,15 +20,22 @@ class SearchBox extends Component<Props> {
   render() {
     const { classes } = this.props;
     return (
-      <Grid container spacing={16}>
+      <Grid container direction="column">
         <Grid item>
-          <TextField id="free-keyword" label="キーワード" type="string" variant="outlined" />
+          <Grid container spacing={16} wrap="nowrap">
+            <Grid item>
+              <TextField id="free-keyword" label="キーワード" type="string" variant="outlined" />
+            </Grid>
+            <Grid item>
+              <TextField id="category" label="カテゴリー" type="string" variant="outlined" />
+            </Grid>
+            <Grid item>
+              <TextField id="emotion" label="感情" type="string" variant="outlined" />
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item>
-          <TextField id="category" label="カテゴリー" type="string" variant="outlined" />
-        </Grid>
-        <Grid item>
-          <TextField id="emotion" label="感情" type="string" variant="outlined" />
+        <Grid item style={{ textAlign: "center" }}>
+          <Button>検索</Button>
         </Grid>
       </Grid>
     );

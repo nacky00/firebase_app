@@ -9,7 +9,11 @@ type Props = {
 
 const styles = {
   root: {
-    height: "50vh",
+    height: "15rem",
+  },
+  title: {
+    paddingTop: "2rem",
+    paddingBottom: "2rem",
   },
 };
 
@@ -22,11 +26,14 @@ class SearchBackground extends Component<Props> {
     const { classes } = this.props;
     return (
       <Paper className={classes.root}>
-        <SearchBox />
-        <Typography>なんかそれっぽいタイトルみたいな文字</Typography>
-        <Typography>なんかそれっぽいタイトルみたいな文字</Typography>
-        <Typography>なんかそれっぽいタイトルみたいな文字</Typography>
-        <Typography>なんかそれっぽいタイトルみたいな文字</Typography>
+        <Grid container direction="column">
+          <Grid item className={classes.title} style={{ textAlign: "center" }}>
+            <Typography variant="display1">なんかそれっぽいタイトルみたいな文字</Typography>
+          </Grid>
+          <Grid item style={{ margin: "auto" }}>
+            <SearchBox />
+          </Grid>
+        </Grid>
       </Paper>
     );
   }
