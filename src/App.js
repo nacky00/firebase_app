@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from "react";
 import { Typography, Card, CardContent, TextField, Button, Grid, withStyles } from "@material-ui/core";
 import AchieveDialog from "./components/dialogs/AchieveDialog";
+import AppBar from "./components/layout/AppBar";
 
 type Props = {
   classes: Object,
@@ -80,6 +81,7 @@ class App extends Component<Props, State> {
 
     return (
       <Fragment>
+        <AppBar />
         <Grid container justify="center">
           <Grid item>
             <Card className={classes.card}>
