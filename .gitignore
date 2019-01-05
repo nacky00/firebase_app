@@ -6,6 +6,12 @@
 .pnp.js
 .idea/workspace.xml
 
+# user-specific stuff
+.idea/**/workspace.xml
+
+.idea/*.iml
+
+
 # testing
 /coverage
 
