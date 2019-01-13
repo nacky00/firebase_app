@@ -4,6 +4,7 @@ import { Typography, Card, CardContent, TextField, Button, Grid, withStyles } fr
 import AchieveDialog from "./components/dialogs/AchieveDialog";
 import AppBar from "./components/layout/AppBar";
 import SearchBackground from "./components/SearchContains/SearchBackground";
+import Main from "./components/layout/Main";
 
 type Props = {
   classes: Object,
@@ -83,62 +84,7 @@ class App extends Component<Props, State> {
     return (
       <Fragment>
         <AppBar />
-        <SearchBackground />
-        {/*<Grid container justify="center">*/}
-        {/*<Grid item>*/}
-        {/*<Card className={classes.card}>*/}
-        {/*<CardContent className={classes.title}>*/}
-        {/*<Typography style={{ textAlign: "center" }}>今日やることを決めよう！</Typography>*/}
-        {/*</CardContent>*/}
-        {/*<CardContent>*/}
-        {/*<Grid container direction="column" alignItems="center">*/}
-        {/*<Grid item className={classes.form}>*/}
-        {/*<TextField*/}
-        {/*id="todo-text"*/}
-        {/*variant="outlined"*/}
-        {/*label="今日すること"*/}
-        {/*value={item}*/}
-        {/*onChange={this.handleChange}*/}
-        {/*/>*/}
-        {/*</Grid>*/}
-        {/*<Grid item xs={12} className={classes.button}>*/}
-        {/*<Button variant="contained" color="primary" onClick={this.handleClick}>*/}
-        {/*追加！*/}
-        {/*</Button>*/}
-        {/*</Grid>*/}
-        {/*</Grid>*/}
-        {/*</CardContent>*/}
-        {/*</Card>*/}
-        {/*<Card className={classes.card}>*/}
-        {/*<CardContent>*/}
-        {/*<Grid container direction="column" alignItems="center">*/}
-        {/*<Grid item>*/}
-        {/*<Typography>達成できるように頑張ろう！</Typography>*/}
-        {/*</Grid>*/}
-        {/*<Grid item className={classes.form}>*/}
-        {/*<Grid container alignItems="center">*/}
-        {/*<Grid item>*/}
-        {/*<Typography>{todayItem === "" ? defaultMessage : todayItem}</Typography>*/}
-        {/*</Grid>*/}
-        {/*<Grid item className={classes.achieveButtonContainer}>*/}
-        {/*<Button*/}
-        {/*variant="outlined"*/}
-        {/*color="secondary"*/}
-        {/*className={classes.achieveButton}*/}
-        {/*disabled={todayItem === ""}*/}
-        {/*onClick={this.handleAchieveClick}*/}
-        {/*>*/}
-        {/*達成した！*/}
-        {/*</Button>*/}
-        {/*</Grid>*/}
-        {/*</Grid>*/}
-        {/*</Grid>*/}
-        {/*</Grid>*/}
-        {/*</CardContent>*/}
-        {/*</Card>*/}
-        {/*</Grid>*/}
-        {/*</Grid>*/}
-        {/*<AchieveDialog open={this.state.open} handleClose={this.handleClose} />*/}
+        <Main />
       </Fragment>
     );
   }

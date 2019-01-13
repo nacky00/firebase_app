@@ -1,6 +1,7 @@
 //@flow
 import React, { Component, Fragment } from "react";
 import { AppBar as AppBarOrigin, Typography, Toolbar, Button, Grid, withStyles } from "@material-ui/core";
+import Menu from "@material-ui/icons/Menu";
 
 type Props = {};
 
@@ -16,7 +17,7 @@ class AppBar extends Component<Props> {
       <AppBarOrigin position="static">
         <Toolbar>
           <Grid container justify="space-between" alignItems="center">
-            <Typography>たつや</Typography>
+              <Menu/>
             <Button variant="contained">Login</Button>
           </Grid>
         </Toolbar>
