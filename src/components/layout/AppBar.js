@@ -17,8 +17,8 @@ class AppBar extends Component<Props> {
       <AppBarOrigin position="static">
         <Toolbar>
           <Grid container justify="space-between" alignItems="center">
-              <Menu/>
-            <Button variant="contained">Login</Button>
+            <Typography style={{ color: "white" }}>ほげほげ</Typography>
+            <Menu />
           </Grid>
         </Toolbar>
       </AppBarOrigin>
