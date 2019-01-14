@@ -1,5 +1,5 @@
 //@flow
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, type Node } from "react";
 import { TextField, Grid, Typography, Divider, IconButton, Button, withStyles } from "@material-ui/core";
 import { MoodBad, SentimentDissatisfied, SentimentVerySatisfied } from "@material-ui/icons";
 
@@ -13,12 +13,22 @@ const styles = {
   name: {
     padding: "1rem",
   },
+  askMessage: {
+    paddingTop: "2rem",
+  },
   icon: {
     fontSize: "3.5rem",
   },
-  button: {
+  buttonContainer: {
     paddingTop: "2rem",
     paddingBottom: "2rem",
+  },
+  button: {
+    color: "#FF8C00",
+    borderColor: "#FF8C00",
+    "&:hover": {
+      backgroundColor: "#FFEFD5",
+    },
   },
 };
 
@@ -50,22 +60,30 @@ class Form extends Component<Props, State> {
             onChange={this.handleChange}
           />
         </Grid>
-        <Grid item className={classes.name}>
+        <Grid item className={classes.askMessage}>
           <Typography>いまどんなきもち？</Typography>
         </Grid>
         <Grid container spacing={16} wrap="nowrap" justify="center">
           <Grid item>
-            <MoodBad className={classes.icon} />
+            <IconButton>
+              <MoodBad className={classes.icon} />
+            </IconButton>
           </Grid>
           <Grid item>
-            <SentimentDissatisfied className={classes.icon} />
+            <IconButton>
+              <SentimentDissatisfied className={classes.icon} />
+            </IconButton>
           </Grid>
           <Grid item>
-            <SentimentVerySatisfied className={classes.icon} />
+            <IconButton>
+              <SentimentVerySatisfied className={classes.icon} />
+            </IconButton>
           </Grid>
         </Grid>
-        <Grid item className={classes.button}>
-          <Button variant="outlined">日記をつくる！</Button>
+        <Grid item className={classes.buttonContainer}>
+          <Button variant="outlined" className={classes.button}>
+            日記をつくる！
+          </Button>
         </Grid>
       </Grid>
     );
