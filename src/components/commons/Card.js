@@ -11,14 +11,12 @@ import {
   withStyles,
 } from "@material-ui/core";
 import { Menu, Favorite } from "@material-ui/icons";
-import Image from "react-image-resizer";
+import DiaryImage from "./DiaryImage";
 
 type Props = {};
 
 const styles = {
-  root: {
-    width: "20rem",
-  },
+  root: {},
   header: {
     height: "5rem",
   },
@@ -27,14 +25,11 @@ const styles = {
   },
   media: {
     height: 200,
-    width: 200,
-    paddingTop: 10,
+    width: 400,
+    marginTop: 10,
+    marginBottom: 10,
   },
   image: {},
-};
-
-const ImageComponent = () => {
-  return <Image src="../../images/water.jpg" width={240} height={240} />;
 };
 
 class Card extends Component<Props> {
@@ -44,15 +39,14 @@ class Card extends Component<Props> {
 
   render() {
     const { classes } = this.props;
+    console.log(DiaryImage);
 
     return (
       <CardOrigin className={classes.root}>
         <CardHeader className={classes.header} title="タイトル" subheader="2019/01/13" />
         <CardContent>
-          <CardMedia image={image} />
-          {/*<Typography>*/}
-          {/*中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル*/}
-          {/*</Typography>*/}
+          <CardMedia className={classes.media} image={require("../../images/anger.jpg")} />
+          <Typography>なんだあいつ〜〜〜！キレちゃうぞ〜〜〜！</Typography>
           <Grid item container className={classes.grid}>
             <Favorite />
           </Grid>
