@@ -13,8 +13,11 @@ const styles = {
     paddingBottom: "5rem",
   },
   title: {
-    paddingTop: "2rem",
+    paddingTop: "3rem",
     paddingBottom: "2rem",
+  },
+  form: {
+    paddingBottom: "3rem",
   },
 };
 
@@ -29,7 +32,11 @@ class SearchBackground extends Component<Props> {
       <Paper className={classes.root}>
         <Grid container direction="column">
           <Grid item className={classes.title} style={{ textAlign: "center" }}>
-            <Typography variant="display1">ここにタイトル〜！</Typography>
+            <Typography variant="h5" style={{ color: "grey" }}>
+              あなたの日記を作ります
+            </Typography>
+          </Grid>
+          <Grid item style={{ textAlign: "center" }} className={classes.form}>
             <Form />
           </Grid>
           <Grid item style={{ margin: "auto" }}>
