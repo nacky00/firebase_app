@@ -1,6 +1,6 @@
 //@flow
 import React, { Component, Fragment } from "react";
-import { TextField, Grid, Typography, Divider, IconButton, withStyles } from "@material-ui/core";
+import { TextField, Grid, Typography, Divider, IconButton, Button, withStyles } from "@material-ui/core";
 import { MoodBad, SentimentDissatisfied, SentimentVerySatisfied } from "@material-ui/icons";
 
 type Props = {};
@@ -15,6 +15,10 @@ const styles = {
   },
   icon: {
     fontSize: "3.5rem",
+  },
+  button: {
+    paddingTop: "2rem",
+    paddingBottom: "2rem",
   },
 };
 
@@ -59,6 +63,9 @@ class Form extends Component<Props, State> {
           <Grid item>
             <SentimentVerySatisfied className={classes.icon} />
           </Grid>
+        </Grid>
+        <Grid item className={classes.button}>
+          <Button variant="outlined">日記をつくる！</Button>
         </Grid>
       </Grid>
     );

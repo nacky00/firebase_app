@@ -8,6 +8,10 @@ type Props = {
   classes: Object,
 };
 
+type State = {
+  emotion: string,
+};
+
 const styles = {
   root: {
     paddingBottom: "5rem",
@@ -21,10 +25,17 @@ const styles = {
   },
 };
 
-class SearchBackground extends Component<Props> {
+class SearchBackground extends Component<Props, State> {
   constructor(props) {
     super(props);
+    this.state = {
+      emotion: "",
+    };
   }
+
+  handleSetEmotion = (string) => {
+    this.setState({ emotion: string });
+  };
 
   render() {
     const { classes } = this.props;
