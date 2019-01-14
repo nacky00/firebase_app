@@ -5,11 +5,13 @@ import {
   CardHeader,
   CardContent,
   CardActions,
+  CardMedia,
   Grid,
   Typography,
   withStyles,
 } from "@material-ui/core";
 import { Menu, Favorite } from "@material-ui/icons";
+import Image from "react-image-resizer";
 
 type Props = {};
 
@@ -23,6 +25,16 @@ const styles = {
   grid: {
     paddingTop: "1rem",
   },
+  media: {
+    height: 200,
+    width: 200,
+    paddingTop: 10,
+  },
+  image: {},
+};
+
+const ImageComponent = () => {
+  return <Image src="../../images/water.jpg" width={240} height={240} />;
 };
 
 class Card extends Component<Props> {
@@ -37,9 +49,10 @@ class Card extends Component<Props> {
       <CardOrigin className={classes.root}>
         <CardHeader className={classes.header} title="タイトル" subheader="2019/01/13" />
         <CardContent>
-          <Typography>
-            中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル
-          </Typography>
+          <CardMedia image={image} />
+          {/*<Typography>*/}
+          {/*中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル中身サンプル*/}
+          {/*</Typography>*/}
           <Grid item container className={classes.grid}>
             <Favorite />
           </Grid>

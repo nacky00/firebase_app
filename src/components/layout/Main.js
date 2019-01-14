@@ -9,7 +9,7 @@ type Props = {
 
 const styles = {
   root: {
-    height: "15rem",
+    paddingBottom: "5rem",
   },
   title: {
     paddingTop: "2rem",
