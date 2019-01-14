@@ -24,6 +24,9 @@ const styles = {
   form: {
     paddingBottom: "3rem",
   },
+  card: {
+    paddingTop: "2rem",
+  },
 };
 
 class SearchBackground extends Component<Props, State> {
@@ -63,7 +66,7 @@ class SearchBackground extends Component<Props, State> {
             </Fragment>
           )}
           {emotion && (
-            <Grid item style={{ margin: "auto" }}>
+            <Grid item style={{ margin: "auto" }} className={classes.card}>
               <Card name={name} emotion={emotion} />
             </Grid>
           )}
