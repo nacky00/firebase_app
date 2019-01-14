@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from "react";
 import { Paper, Typography, Toolbar, Button, Grid, withStyles } from "@material-ui/core";
 import Card from "../commons/Card";
+import Form from "../commons/Form";
 
 type Props = {
   classes: Object,
@@ -29,6 +30,7 @@ class SearchBackground extends Component<Props> {
         <Grid container direction="column">
           <Grid item className={classes.title} style={{ textAlign: "center" }}>
             <Typography variant="display1">ここにタイトル〜！</Typography>
+            <Form />
           </Grid>
           <Grid item style={{ margin: "auto" }}>
             <Card />
