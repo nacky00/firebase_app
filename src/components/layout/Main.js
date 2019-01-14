@@ -50,17 +50,23 @@ class SearchBackground extends Component<Props, State> {
     return (
       <Paper className={classes.root}>
         <Grid container direction="column">
-          <Grid item className={classes.title} style={{ textAlign: "center" }}>
-            <Typography variant="h5" style={{ color: "grey" }}>
-              あなたの日記を作ります
-            </Typography>
-          </Grid>
-          <Grid item style={{ textAlign: "center" }} className={classes.form}>
-            <Form handleNameChange={this.handleNameChange} handleButtonClick={this.handleSetEmotion} />
-          </Grid>
-          <Grid item style={{ margin: "auto" }}>
-            <Card name={name} emotion={emotion} />
-          </Grid>
+          {emotion === null && (
+            <Fragment>
+              <Grid item className={classes.title} style={{ textAlign: "center" }}>
+                <Typography variant="h5" style={{ color: "grey" }}>
+                  あなたの日記を作ります
+                </Typography>
+              </Grid>
+              <Grid item style={{ textAlign: "center" }} className={classes.form}>
+                <Form handleNameChange={this.handleNameChange} handleButtonClick={this.handleSetEmotion} />
+              </Grid>
+            </Fragment>
+          )}
+          {emotion && (
+            <Grid item style={{ margin: "auto" }}>
+              <Card name={name} emotion={emotion} />
+            </Grid>
+          )}
         </Grid>
       </Paper>
     );
