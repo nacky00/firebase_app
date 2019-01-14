@@ -25,10 +25,15 @@ const styles = {
     paddingBottom: "2rem",
   },
   button: {
-    color: "#FF8C00",
+    color: "#ff5500",
     borderColor: "#FF8C00",
+    backgroundColor: "#ffd9b3",
     "&:hover": {
       backgroundColor: "#FFEFD5",
+    },
+    "&:disabled": {
+      borderColor: "#C0C0C0",
+      backgroundColor: "#FFFFFF",
     },
   },
 };
@@ -52,8 +57,9 @@ class Form extends Component<Props, State> {
   };
 
   render() {
-    const { name } = this.state;
+    const { name, buttonKind } = this.state;
     const { classes } = this.props;
+
     return (
       <Grid container direction="column">
         <Grid item className={classes.name}>
@@ -72,22 +78,22 @@ class Form extends Component<Props, State> {
         <Grid container spacing={16} wrap="nowrap" justify="center">
           <Grid item>
             <IconButton onClick={this.handleButtonClick("angry")}>
-              <MoodBad className={classes.icon} />
+              <MoodBad className={classes.icon} style={{ color: buttonKind === "angry" && "#cc1414" }} />
             </IconButton>
           </Grid>
           <Grid item>
             <IconButton onClick={this.handleButtonClick("sad")}>
-              <SentimentDissatisfied className={classes.icon} />
+              <SentimentDissatisfied className={classes.icon} style={{ color: buttonKind === "sad" && "#4da6ff" }} />
             </IconButton>
           </Grid>
           <Grid item>
             <IconButton onClick={this.handleButtonClick("happy")}>
-              <SentimentVerySatisfied className={classes.icon} />
+              <SentimentVerySatisfied className={classes.icon} style={{ color: buttonKind === "happy" && "#ff66b3" }} />
             </IconButton>
           </Grid>
         </Grid>
         <Grid item className={classes.buttonContainer}>
-          <Button variant="outlined" className={classes.button}>
+          <Button variant="outlined" className={classes.button} disabled={buttonKind ? false : true}>
             日記をつくる！
           </Button>
         </Grid>
