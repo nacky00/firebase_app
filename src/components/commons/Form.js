@@ -3,10 +3,12 @@ import React, { Component, Fragment, type Node } from "react";
 import { TextField, Grid, Typography, Divider, IconButton, Button, withStyles } from "@material-ui/core";
 import { MoodBad, SentimentDissatisfied, SentimentVerySatisfied } from "@material-ui/icons";
 
-type Props = {};
+type Props = {
+  handleNameChange: (string) => void,
+  handleButtonClick: (string) => () => void,
+};
 
 type State = {
-  name: string,
   buttonKind: ?string,
 };
 
@@ -43,34 +45,30 @@ class Form extends Component<Props, State> {
     super(props);
 
     this.state = {
-      name: "",
       buttonKind: null,
     };
   }
 
   handleChange = (event) => {
-    this.setState({ name: event.target.value });
+    this.props.handleNameChange(event.target.value);
   };
 
   handleButtonClick = (buttonKind) => () => {
     this.setState({ buttonKind: buttonKind });
   };
 
+  handleCreateButtonClick = () => {
+    this.props.handleButtonClick(this.state.buttonKind);
+  };
+
   render() {
-    const { name, buttonKind } = this.state;
+    const { buttonKind } = this.state;
     const { classes } = this.props;
 
     return (
       <Grid container direction="column">
         <Grid item className={classes.name}>
-          <TextField
-            id="name"
-            label="なまえをいれてね"
-            type="string"
-            value={name}
-            variant="outlined"
-            onChange={this.handleChange}
-          />
+          <TextField id="name" label="なまえをいれてね" type="string" variant="outlined" onChange={this.handleChange} />
         </Grid>
         <Grid item className={classes.askMessage}>
           <Typography>いまどんなきもち？</Typography>
@@ -93,7 +91,12 @@ class Form extends Component<Props, State> {
           </Grid>
         </Grid>
         <Grid item className={classes.buttonContainer}>
-          <Button variant="outlined" className={classes.button} disabled={buttonKind ? false : true}>
+          <Button
+            variant="outlined"
+            className={classes.button}
+            disabled={buttonKind ? false : true}
+            onClick={this.handleCreateButtonClick}
+          >
             日記をつくる！
           </Button>
         </Grid>
