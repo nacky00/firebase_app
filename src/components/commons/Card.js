@@ -26,7 +26,9 @@ type State = {
 };
 
 const styles = {
-  root: {},
+  root: {
+    width: 435,
+  },
   header: {
     height: "5rem",
     paddingBottom: "1rem",
@@ -62,14 +64,25 @@ class Card extends Component<Props, State> {
   render() {
     const { classes, name, emotion = "happy" } = this.props;
     const { isClicked } = this.state;
+    const selectedEmotion = emotion ? emotion : "baby";
 
     return (
       <CardOrigin className={classes.root}>
         <CardHeader className={classes.header} title="タイトル" subheader={name ? name : "名無し"} />
         <Divider className={classes.divider} />
         <CardContent>
-          <CardMedia className={classes.media} image={require("../../images/anger.jpg")} />
-          <Typography>なんだあいつ〜〜〜！キレちゃうぞ〜〜〜！</Typography>
+          <CardMedia className={classes.media} image={require(`../../images/${selectedEmotion}.jpg`)} />
+          <Typography>
+            {emotion === "angry" &&
+              "も〜怒っちゃった！激おこぷんぷんまる！なんなのあいつ！こんなにおとなしい私が怒らせるなんて、逆に尊敬しちゃうわ！"}
+          </Typography>
+          <Typography>
+            {emotion === "sad" &&
+              "今日はなんだか悲しいことが続いちゃった気がするわ。神様のいたずらかしら。でも大丈夫、明日はその分いいことがあるわ♪"}
+          </Typography>
+          <Typography>
+            {emotion === "happy" && "この世に生まれてヨカッタ〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜！俺最強説！！！！！！！"}
+          </Typography>
           <Grid item container className={classes.grid}>
             <IconButton onClick={this.handleButtonClick}>
               <FavoriteIcon isFavorite={isClicked} />
