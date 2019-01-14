@@ -29,9 +29,14 @@ const styles = {
   root: {
     width: 435,
   },
+  date: {
+    paddingRight: "1rem",
+    paddingBottom: "1rem",
+  },
   header: {
     height: "5rem",
-    paddingBottom: "1rem",
+    paddingBottom: 0,
+    marginBottom: "-1rem",
   },
   divider: {
     marginRight: "1rem",
@@ -81,10 +86,22 @@ class Card extends Component<Props, State> {
       }
       return customTitle;
     };
+    const today = new Date().toString();
+    const getToday = () => {
+      const dt = new Date();
+      const y = dt.getFullYear();
+      const m = ("00" + (dt.getMonth() + 1)).slice(-2);
+      const d = ("00" + dt.getDate()).slice(-2);
+      const result = y + "/" + m + "/" + d;
+      return result;
+    };
 
     return (
       <CardOrigin className={classes.root}>
         <CardHeader className={classes.header} title={title()} subheader={name ? name : "名無し"} />
+        <Typography className={classes.date} style={{ textAlign: "right", color: "#808080" }}>
+          {getToday()}
+        </Typography>
         <Divider className={classes.divider} />
         <CardContent>
           <CardMedia className={classes.media} image={require(`../../images/${emotion}.jpg`)} />
