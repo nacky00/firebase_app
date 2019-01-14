@@ -64,14 +64,30 @@ class Card extends Component<Props, State> {
   render() {
     const { classes, name, emotion = "happy" } = this.props;
     const { isClicked } = this.state;
-    const selectedEmotion = emotion ? emotion : "baby";
+    const title = () => {
+      let customTitle;
+      switch (emotion) {
+        case "angry":
+          customTitle = "ぷんぷん！";
+          break;
+        case "sad":
+          customTitle = "ううん、、、";
+          break;
+        case "happy":
+          customTitle = "やった！";
+          break;
+        default:
+          customTitle = "no title";
+      }
+      return customTitle;
+    };
 
     return (
       <CardOrigin className={classes.root}>
-        <CardHeader className={classes.header} title="タイトル" subheader={name ? name : "名無し"} />
+        <CardHeader className={classes.header} title={title()} subheader={name ? name : "名無し"} />
         <Divider className={classes.divider} />
         <CardContent>
-          <CardMedia className={classes.media} image={require(`../../images/${selectedEmotion}.jpg`)} />
+          <CardMedia className={classes.media} image={require(`../../images/${emotion}.jpg`)} />
           <Typography>
             {emotion === "angry" &&
               "も〜怒っちゃった！激おこぷんぷんまる！なんなのあいつ！こんなにおとなしい私が怒らせるなんて、逆に尊敬しちゃうわ！"}
