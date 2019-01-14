@@ -16,7 +16,10 @@ import { Menu, Favorite } from "@material-ui/icons";
 import DiaryImage from "./DiaryImage";
 import FavoriteIcon from "./FavoriteIcon";
 
-type Props = {};
+type Props = {
+  name: ?string,
+  emotion: string,
+};
 
 type State = {
   isClicked: boolean,
@@ -57,12 +60,12 @@ class Card extends Component<Props, State> {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, name, emotion = "happy" } = this.props;
     const { isClicked } = this.state;
 
     return (
       <CardOrigin className={classes.root}>
-        <CardHeader className={classes.header} title="タイトル" subheader="2019/01/13" />
+        <CardHeader className={classes.header} title="タイトル" subheader={name ? name : "名無し"} />
         <Divider className={classes.divider} />
         <CardContent>
           <CardMedia className={classes.media} image={require("../../images/anger.jpg")} />

@@ -9,7 +9,7 @@ type Props = {
 };
 
 type State = {
-  name: string,
+  name: ?string,
   emotion: ?string,
 };
 
@@ -30,7 +30,7 @@ class SearchBackground extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      name: null,
       emotion: null,
     };
   }
@@ -45,6 +45,8 @@ class SearchBackground extends Component<Props, State> {
 
   render() {
     const { classes } = this.props;
+    const { name, emotion } = this.state;
+
     return (
       <Paper className={classes.root}>
         <Grid container direction="column">
@@ -57,7 +59,7 @@ class SearchBackground extends Component<Props, State> {
             <Form handleNameChange={this.handleNameChange} handleButtonClick={this.handleSetEmotion} />
           </Grid>
           <Grid item style={{ margin: "auto" }}>
-            <Card />
+            <Card name={name} emotion={emotion} />
           </Grid>
         </Grid>
       </Paper>
