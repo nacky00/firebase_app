@@ -8,17 +8,29 @@ import {
   CardMedia,
   Grid,
   Typography,
+  Divider,
+  IconButton,
   withStyles,
 } from "@material-ui/core";
 import { Menu, Favorite } from "@material-ui/icons";
 import DiaryImage from "./DiaryImage";
+import FavoriteIcon from "./FavoriteIcon";
 
 type Props = {};
+
+type State = {
+  isClicked: boolean,
+};
 
 const styles = {
   root: {},
   header: {
     height: "5rem",
+    paddingBottom: "1rem",
+  },
+  divider: {
+    marginRight: "1rem",
+    marginLeft: "1rem",
   },
   grid: {
     paddingTop: "1rem",
@@ -32,23 +44,33 @@ const styles = {
   image: {},
 };
 
-class Card extends Component<Props> {
+class Card extends Component<Props, State> {
   constructor(props) {
     super(props);
+    this.state = {
+      isClicked: false,
+    };
   }
+
+  handleButtonClick = () => {
+    this.setState({ isClicked: this.state.isClicked ? false : true });
+  };
 
   render() {
     const { classes } = this.props;
-    console.log(DiaryImage);
+    const { isClicked } = this.state;
 
     return (
       <CardOrigin className={classes.root}>
         <CardHeader className={classes.header} title="タイトル" subheader="2019/01/13" />
+        <Divider className={classes.divider} />
         <CardContent>
           <CardMedia className={classes.media} image={require("../../images/anger.jpg")} />
           <Typography>なんだあいつ〜〜〜！キレちゃうぞ〜〜〜！</Typography>
           <Grid item container className={classes.grid}>
-            <Favorite />
+            <IconButton onClick={this.handleButtonClick}>
+              <FavoriteIcon isFavorite={isClicked} />
+            </IconButton>
           </Grid>
         </CardContent>
       </CardOrigin>
