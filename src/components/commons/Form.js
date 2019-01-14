@@ -7,6 +7,7 @@ type Props = {};
 
 type State = {
   name: string,
+  buttonKind: ?string,
 };
 
 const styles = {
@@ -38,11 +39,16 @@ class Form extends Component<Props, State> {
 
     this.state = {
       name: "",
+      buttonKind: null,
     };
   }
 
   handleChange = (event) => {
     this.setState({ name: event.target.value });
+  };
+
+  handleButtonClick = (buttonKind) => () => {
+    this.setState({ buttonKind: buttonKind });
   };
 
   render() {
@@ -65,17 +71,17 @@ class Form extends Component<Props, State> {
         </Grid>
         <Grid container spacing={16} wrap="nowrap" justify="center">
           <Grid item>
-            <IconButton>
+            <IconButton onClick={this.handleButtonClick("angry")}>
               <MoodBad className={classes.icon} />
             </IconButton>
           </Grid>
           <Grid item>
-            <IconButton>
+            <IconButton onClick={this.handleButtonClick("sad")}>
               <SentimentDissatisfied className={classes.icon} />
             </IconButton>
           </Grid>
           <Grid item>
-            <IconButton>
+            <IconButton onClick={this.handleButtonClick("happy")}>
               <SentimentVerySatisfied className={classes.icon} />
             </IconButton>
           </Grid>
